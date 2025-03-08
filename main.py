@@ -103,7 +103,7 @@ if "messages" not in st.session_state:
             description="自社「株式会社EcoTee」に関する情報を参照したい時に使う"
         ),
         Tool(
-            func=run_company_doc_chain,
+            func=run_regulation_check_doc_chain,
             name="自社が新しく開発する新規事業に関する法規制について",
             description="自社が新しく開発する新規事業の法規制に関する情報を参照したい時に使う"
         )

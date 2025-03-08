@@ -32,6 +32,8 @@ def create_rag_chain(db_name):
         folder_name = "data/customer"
     elif db_name == ".db_company":
         folder_name = "data/company"
+    elif db_name == ".db_regulation_check:
+        folder_name = "data/regulation_check"
     else:
         folder_name = "data"
     files = os.listdir(folder_name)
