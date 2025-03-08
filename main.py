@@ -101,6 +101,11 @@ if "messages" not in st.session_state:
             name="自社「株式会社EcoTee」について",
             description="自社「株式会社EcoTee」に関する情報を参照したい時に使う"
         )
+        Tool(
+            func=run_company_doc_chain,
+            name="自社が新しく開発する新規事業に関する法規制について",
+            description="自社が新しく開発する新規事業の法規制に関する情報を参照したい時に使う"
+        )
     ]
     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.5, streaming=True)
     st.session_state.agent_executor = initialize_agent(
