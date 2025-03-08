@@ -1,9 +1,9 @@
 import streamlit as st
 from dotenv import load_dotenv
-from langchain.agents import AgentType, initialize_agent, load_tools
+from langchain.agents import AgentType, initialize_agent
 from langchain.tools import Tool
 from langchain import SerpAPIWrapper
-from langchain.schema import SystemMessage, HumanMessage, AIMessage
+from langchain.schema import HumanMessage, AIMessage
 import tiktoken
 from langchain_openai import ChatOpenAI
 from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
@@ -58,7 +58,7 @@ if "messages" not in st.session_state:
     customer_doc_chain = ft.create_rag_chain(".db_customer")
     company_doc_chain = ft.create_rag_chain(".db_company")
     regulation_check_chain = ft.create_rag_chain(".db_regulation_check")
-    st.session_state.ra_chain = ft.create_rag_chain(".db_ra")
+    st.session_state.rag_chain = ft.create_rag_chain(".db_all")
 
     # Toolで実行される関数の定義
     def run_service_doc_chain(param):
