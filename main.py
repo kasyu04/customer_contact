@@ -1,3 +1,9 @@
+import sys
+import os
+
+# functions.py ファイルが存在するディレクトリをモジュール検索パスに追加
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
 import streamlit as st
 from dotenv import load_dotenv
 from langchain.agents import AgentType, initialize_agent
