@@ -57,6 +57,7 @@ if "messages" not in st.session_state:
     service_doc_chain = ft.create_rag_chain(".db_service")
     customer_doc_chain = ft.create_rag_chain(".db_customer")
     company_doc_chain = ft.create_rag_chain(".db_company")
+    regulation_check_chain = ft.create_rag_chain(".db_regulation_check")
     st.session_state.rag_chain = ft.create_rag_chain(".db_all")
 
     # Toolで実行される関数の定義
@@ -72,7 +73,7 @@ if "messages" not in st.session_state:
         ai_msg = company_doc_chain.invoke({"input": param, "chat_history": st.session_state.chat_history})
         st.session_state.chat_history.extend([HumanMessage(content=param), AIMessage(content=ai_msg["answer"])])
         return ai_msg["answer"]
-    def run_regulation_check_chain(param):
+    def run_regulation_check_doc_chain(param):
         ai_msg = regulation_check_chain.invoke({"input": param, "chat_history": st.session_state.chat_history})
         st.session_state.chat_history.extend([HumanMessage(content=param), AIMessage(content=ai_msg["answer"])])
         return ai_msg["answer"]
@@ -100,7 +101,7 @@ if "messages" not in st.session_state:
             func=run_company_doc_chain,
             name="自社「株式会社EcoTee」について",
             description="自社「株式会社EcoTee」に関する情報を参照したい時に使う"
-        )
+        ),
         Tool(
             func=run_company_doc_chain,
             name="自社が新しく開発する新規事業に関する法規制について",
