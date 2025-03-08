@@ -14,7 +14,7 @@ import tiktoken
 from langchain_openai import ChatOpenAI
 from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 import constants as ct
-
+import functions as ft
 
 # 各種設定
 st.set_page_config(
