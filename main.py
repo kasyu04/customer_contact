@@ -72,6 +72,11 @@ if "messages" not in st.session_state:
         ai_msg = company_doc_chain.invoke({"input": param, "chat_history": st.session_state.chat_history})
         st.session_state.chat_history.extend([HumanMessage(content=param), AIMessage(content=ai_msg["answer"])])
         return ai_msg["answer"]
+    def run_regulation_check_chain(param):
+        ai_msg = regulation_check_chain.invoke({"input": param, "chat_history": st.session_state.chat_history})
+        st.session_state.chat_history.extend([HumanMessage(content=param), AIMessage(content=ai_msg["answer"])])
+        return ai_msg["answer"]
+
 
     # AgentExecutorの作成
     search = SerpAPIWrapper()
